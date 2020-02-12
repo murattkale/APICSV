@@ -44,7 +44,7 @@ namespace HelperService.Services
             }
         }
 
-        public void WriteNewCsvFile<T>(string path, List<T> employeeModels)
+        public CsvWriter WriteNewCsvFile<T>(string path, List<T> employeeModels)
         {
             using (StreamWriter sw = new StreamWriter(path, false, new UTF8Encoding(true)))
             using (CsvWriter cw = new CsvWriter(sw))
@@ -56,6 +56,7 @@ namespace HelperService.Services
                     cw.WriteRecord<T>(emp);
                     cw.NextRecord();
                 }
+                return cw;
             }
         }
     }

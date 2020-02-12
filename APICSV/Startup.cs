@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Models;
 
 namespace APICSV
 {
@@ -26,6 +27,12 @@ namespace APICSV
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddMvc(options =>
+            {
+                options.OutputFormatters.Add(new CsvMediaTypeFormatter());
+            })
+                .AddXmlSerializerFormatters();
 
             //services
             //   .AddMvc(option => option.EnableEndpointRouting = false)
