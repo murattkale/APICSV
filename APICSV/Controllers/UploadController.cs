@@ -36,7 +36,7 @@ namespace APICSV.Controllers
                 filestream.Flush();
                 filestream.Close();
             }
-
+             
             var fullPath = this._IHostingEnvironment.ContentRootPath + "\\uploads\\" + objfile.FileName;
             var result = _ICsvParserService.ReadCsvFileToEmployeeModel<EmployeeModel>(fullPath);
             //var jsonString = JsonConvert.SerializeObject(result);
